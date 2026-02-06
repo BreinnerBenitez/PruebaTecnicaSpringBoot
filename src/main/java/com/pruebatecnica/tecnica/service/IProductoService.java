@@ -9,7 +9,7 @@ public interface IProductoService {
 
 
     List<ProductoDTO> traerPoductos ();
-    ProductoDTO crearSucursal(ProductoDTO PoductoDto);
-    ProductoDTO actualizarSucursal(Long id, ProductoDTO productoDTO);
+    ProductoDTO crearProducto(ProductoDTO PoductoDto);
+    ProductoDTO actualizarProducto(Long id, ProductoDTO productoDTO);
     void eliminarPoducto(Long id);
 }

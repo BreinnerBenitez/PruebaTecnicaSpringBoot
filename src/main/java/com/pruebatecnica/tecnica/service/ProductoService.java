@@ -3,6 +3,7 @@ package com.pruebatecnica.tecnica.service;
 import com.pruebatecnica.tecnica.dto.ProductoDTO;
 import com.pruebatecnica.tecnica.dto.VentaDTO;
 import com.pruebatecnica.tecnica.mapper.Mapper;
+import com.pruebatecnica.tecnica.model.Producto;
 import com.pruebatecnica.tecnica.repository.IProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,12 +21,20 @@ public class ProductoService  implements  IProductoService{
     }
 
     @Override
-    public ProductoDTO crearSucursal(ProductoDTO PoductoDto) {
-        return null;
+    public ProductoDTO crearProducto(ProductoDTO ProductoDto) {
+       var prod = Producto.builder()
+               .nombre(ProductoDto.getNombre())
+               .categoria(ProductoDto.getCategoria())
+               .precio(ProductoDto.getPrecio())
+               .cantidad(ProductoDto.getCantidad())
+               .build();
+
+
+        return Mapper.toDTO(repo.save(prod));
     }
 
     @Override
-    public ProductoDTO actualizarSucursal(Long id, ProductoDTO productoDTO) {
+    public ProductoDTO actualizarProducto(Long id, ProductoDTO productoDTO) {
         return null;
     }
 
