@@ -8,6 +8,7 @@ import lombok.*;
 @Setter @Getter
 @ToString
 @Entity
+@Builder
 @Table(name = "sucursal")
 public class Sucursal {
     @Id
