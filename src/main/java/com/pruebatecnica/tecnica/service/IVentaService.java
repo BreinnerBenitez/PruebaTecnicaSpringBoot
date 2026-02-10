@@ -9,8 +9,8 @@ public interface IVentaService {
 
 
     List<VentaDTO> traerVentas ();
-    VentaDTO crearSucursal(VentaDTO ventaDto);
-    VentaDTO actualizarSucursal(Long id, VentaDTO sucrusalDTO);
+    VentaDTO crearVenta(VentaDTO ventaDto);
+    VentaDTO actualizarVenta(Long id, VentaDTO sucrusalDTO);
     void eliminarVenta(Long id);
 
 

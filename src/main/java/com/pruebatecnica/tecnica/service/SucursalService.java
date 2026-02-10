@@ -5,7 +5,6 @@ import com.pruebatecnica.tecnica.exception.NotFoundException;
 import com.pruebatecnica.tecnica.mapper.Mapper;
 import com.pruebatecnica.tecnica.model.Sucursal;
 import com.pruebatecnica.tecnica.repository.ISucursalRepository;
-import org.hibernate.engine.jdbc.cursor.internal.StandardRefCursorSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
