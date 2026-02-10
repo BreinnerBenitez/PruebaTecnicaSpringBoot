@@ -2,6 +2,7 @@ package com.pruebatecnica.tecnica.service;
 
 import com.pruebatecnica.tecnica.dto.ProductoDTO;
 import com.pruebatecnica.tecnica.dto.VentaDTO;
+import com.pruebatecnica.tecnica.exception.NotFoundException;
 import com.pruebatecnica.tecnica.mapper.Mapper;
 import com.pruebatecnica.tecnica.model.Producto;
 import com.pruebatecnica.tecnica.repository.IProductoRepository;
@@ -35,7 +36,16 @@ public class ProductoService  implements  IProductoService{
 
     @Override
     public ProductoDTO actualizarProducto(Long id, ProductoDTO productoDTO) {
-        return null;
+
+        // buscar si existe en la base de datos
+        Producto prod = repo.findById(id)
+                .orElseThrow(() -> new NotFoundException("Producto no existe"));
+        prod.setNombre(productoDTO.getNombre());
+        prod.setCategoria(productoDTO.getCategoria());
+        prod.setCantidad(productoDTO.getCantidad());
+        prod.setPrecio(productoDTO.getPrecio());
+
+        return  Mapper.toDTO(repo.save(prod));
     }
 
     @Override
