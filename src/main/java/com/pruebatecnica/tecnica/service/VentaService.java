@@ -75,19 +75,38 @@ public class VentaService implements IVentaService {
             if (p == null) {
                 throw new RuntimeException("Producto no encontrado: " + detDTO.getNombreProd());
             }
+            //Crear detalle
+            DetalleVenta detalleVent = new DetalleVenta();
+            detalleVent.setPro(p);
+            detalleVent.setPrecio(detDTO.getPrecio());
+            detalleVent.setCanProd(detDTO.getCanProd());
+            detalleVent.setVenta(vent);
+
+            detalles.add(detalleVent);
+            totalCalculado = totalCalculado + (detDTO.getPrecio() * detDTO.getCanProd());
+
 
         }
+        //Seteamos la lista de detalle Venta
+        vent.setDetalle(detalles);
+
+        //guardamos en la BD
+        vent = ventaRepo.save(vent);
+
+        //Mapeo de salida
+        VentaDTO ventaSalida = Mapper.toDTO(vent);
+
+        return ventaSalida;
+    }
+
+    @Override
+    public VentaDTO actualizarVenta(Long id, VentaDTO sucrusalDTO) {
         return null;
     }
 
-        @Override
-        public VentaDTO actualizarVenta (Long id, VentaDTO sucrusalDTO){
-            return null;
-        }
+    @Override
+    public void eliminarVenta(Long id) {
 
-        @Override
-        public void eliminarVenta (Long id){
-
-        }
+    }
 
 }
