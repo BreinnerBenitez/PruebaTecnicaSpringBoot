@@ -100,12 +100,40 @@ public class VentaService implements IVentaService {
     }
 
     @Override
-    public VentaDTO actualizarVenta(Long id, VentaDTO sucrusalDTO) {
-        return null;
+    public VentaDTO actualizarVenta(Long id, VentaDTO ventaDTO) {
+        //buscar si la venta existe para actualizarla
+        Venta v = ventaRepo.findById(id).orElse(null);
+        if (v == null) throw new RuntimeException("Venta no encontrada");
+
+        if (ventaDTO.getFecha()!=null) {
+            v.setFecha(ventaDTO.getFecha());
+        }
+        if(ventaDTO.getEstado()!=null) {
+            v.setEstado(ventaDTO.getEstado());
+        }
+
+        if (ventaDTO.getTotal()!=null) {
+            v.setTotal(ventaDTO.getTotal());
+        }
+
+        if (ventaDTO.getIdSucursal()!=null) {
+            Sucursal suc = sucursalRepo.findById(ventaDTO.getIdSucursal()).orElse(null);
+            if (suc == null) throw new NotFoundException("Sucursal no encontrada");
+            v.setSucursal(suc);
+        }
+        ventaRepo.save(v);
+
+        VentaDTO ventaSalida = Mapper.toDTO(v);
+
+        return ventaSalida;
     }
 
     @Override
     public void eliminarVenta(Long id) {
+
+        Venta v = ventaRepo.findById(id).orElse(null);
+        if (v == null) throw new RuntimeException("Venta no encontrada");
+        ventaRepo.delete(v);
 
     }
 
