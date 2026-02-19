@@ -1,0 +1,152 @@
+{
+  "info": {
+    "_postman_id": "9c398bfc-0802-45c7-bb9b-a96073811363",
+    "name": "prueba tecnica",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "48957005",
+    "_collection_link": "https://go.postman.co/collection/48957005-9c398bfc-0802-45c7-bb9b-a96073811363?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "post productos",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n\"nombre\": \"coca cocacola\",\r\n\"categoria\":\"bebidas\",\r\n\"precio\":1500.0,\r\n\"cantidad\": 30\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/productos",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "productos"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "traer productos",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "guardar productos",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n\"nombre\":\"sucursal cnetro\",\r\n\"direccion\":\"san martin 123\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/sucursales",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "sucursales"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "traer sucursales",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "ingresar ventas",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n \"fecha\":\"202611-01\",\r\n \"estado\":\"resgistrado\",\r\n \"idSucursal\":1,\r\n \"detalle\":[\r\n    {\r\n        \"id\":1,\r\n        \"nombreProd\":\"Coca cola\",\r\n        \"canPro\":2,\r\n        \"precio\":1500.0,\r\n        \"subtotal\":3000.0\r\n    },\r\n    {\r\n\r\n        \"id\":2,\r\n        \"nombreProd\":\"naranja\",\r\n        \"canPro\":3,\r\n        \"precio\":1500.0,\r\n         \"subtotal\":4500.0\r\n    }\r\n ], \r\n  \"total\":7500.0\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/ventas",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "ventas"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "traer ventas",
+      "request": {
+        "method": "GET",
+        "header": []
+      },
+      "response": []
+    },
+    {
+      "name": "borrar producto",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{ \r\n\"nombre\": \"coca cocacola\",\r\n\"categoria\":\"bebidas\",\r\n\"precio\":1500.0,\r\n\"cantidad\": 30\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/productos/3",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "productos",
+            "3"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
